@@ -1,0 +1,33 @@
+﻿@model geos_mvc.Models.personel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="wrapper fadeInDown">
+        @using (Html.BeginForm("Authorise", "Login", FormMethod.Post))
+        {
+            <div id="formContent">
+                <h2 class="active"> Giriş </h2>
+                <form>
+                    @Html.TextBoxFor(m => m.KullanıcıAdı, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
+                    @Html.TextBoxFor(m => m.Sifre, new { @class = "form-control", placeholder = "Şifre" })
+                    <button type="submit" class="btn btn-success">Giriş Yap</button>
+                    <label >@Html.DisplayFor(m => m.LoginErrorMsg)</label>
+                </form>
+            </div>
+        }
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </div>
+
+</body>
+</html>

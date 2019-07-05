@@ -1,0 +1,69 @@
+﻿@model IEnumerable<geos_mvc.Models.personel>
+
+@{
+    ViewBag.Title = "Personel Listele";
+    if (Session["pers_id"]==null)       
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    
+}
+
+    <h2>Personel Listele</h2>
+
+<h2>
+    @Html.ActionLink("Yeni Kayıt", "Create",  new {@class = "btn btn-primary"})
+</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ad)  
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gsm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KullanıcıAdı)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sifre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gsm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KullanıcıAdı)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sifre)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.pers_id }, new {@class = "btn btn-success"}) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.pers_id }, new {@class = "btn btn-success" }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.pers_id }, new {@class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+
